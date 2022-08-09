@@ -57,15 +57,13 @@ def count_neighbors(grid, row, col)
 	return neighbors
 end
 
-puts count_neighbors(grid, 0,0)
 
 
 def new_gen(grid,row,col)
 
 	grid_2 = Array.new(row) { Array.new(col, '.') }
 	row.times do |i|
-		col.times do |j|
-			puts j
+		col.times do |j|	
 			n = count_neighbors(grid, i, j)
 			cell = "."
 			if (grid[i][j] == "*" && n < 2)
@@ -74,7 +72,7 @@ def new_gen(grid,row,col)
 			elsif (grid[i][j] == "*" && n > 3)
 				cell = "."
 			
-			elsif (grid[i][j] == "*" && n > 2)
+			elsif (grid[i][j] == "*" && n >= 2)
 				cell = "*"
 			
 			elsif (grid[i][j] == "." && n == 3)
@@ -88,5 +86,10 @@ end
 
 # puts grid[0][0]
 
+puts('Primera generación')
 print_grid(grid)
+puts ''
+puts('Segunda generación')
 new_gen(grid,row,col)
+
+
