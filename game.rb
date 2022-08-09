@@ -42,15 +42,15 @@ def count_neighbors(grid, row, col)
 		neighbors += 1
 	end
 
-	if grid[row + 1][col - 1] == '*' && row + 1 < grid.length && col - 1 >= 0
+    if row + 1 < grid.length && col - 1 >= 0 && grid[row + 1][col - 1] == '*'
 		neighbors += 1
 	end
 
-	if grid[row + 1][col] == '*' && row + 1 < grid.length
+	if row + 1 < grid.length && grid[row + 1][col] == '*'
 		neighbors += 1
 	end
 
-	if grid[row + 1][col + 1] == '*' && row + 1 < grid.length && col + 1 < grid[0].length
+	if row + 1 < grid.length && col + 1 < grid[0].length && grid[row + 1][col + 1] == '*'
 		neighbors += 1
 	end
 
@@ -61,12 +61,13 @@ puts count_neighbors(grid, 0,0)
 
 
 def new_gen(grid,row,col)
+
 	grid_2 = Array.new(row) { Array.new(col, '.') }
 	row.times do |i|
 		col.times do |j|
 			puts j
 			n = count_neighbors(grid, i, j)
-			cell = ""
+			cell = "."
 			if (grid[i][j] == "*" && n < 2)
 				cell = "."
 			
